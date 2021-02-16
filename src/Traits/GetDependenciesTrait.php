@@ -28,12 +28,8 @@ trait GetDependenciesTrait
 
     protected function transformDependency(ReflectionParameter $parameter)
     {
-        $class = $parameter->getClass();
-
-        if (empty($class)) {
-            return null;
-        }
-
-        return $class->name;
+        return ($parameter->getType() && !$parameter->getType()->isBuiltin())
+            ? $parameter->getType()->getName()
+            : null;
     }
 }
