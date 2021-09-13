@@ -108,7 +108,7 @@ class SwaggerService
 
     protected function generateSecurityDefinition()
     {
-        $availableTypes = ['jwt', 'laravel'];
+        $availableTypes = ['jwt', 'laravel', 'token'];
         $security = $this->security;
 
         if (empty($security)) {
@@ -138,6 +138,12 @@ class SwaggerService
                 return [
                     'type' => 'apiKey',
                     'name' => 'Cookie',
+                    'in' => 'header'
+                ];
+            case 'token':
+                return [
+                    'type' => 'apiKey',
+                    'name' => 'token',
                     'in' => 'header'
                 ];
         }
@@ -179,6 +185,7 @@ class SwaggerService
     {
         $uri = $this->request->route()->uri();
         $basePath = preg_replace("/^\//", '', config('auto-doc.basePath'));
+        $basePath = preg_quote($basePath, '/');
         $preparedUri = preg_replace("/^{$basePath}/", '', $uri);
 
         return preg_replace("/^\//", '', $preparedUri);
@@ -525,6 +532,9 @@ class SwaggerService
                 break;
             case 'laravel' :
                 $header = $this->request->cookie('__ym_uid');
+                break;
+            case 'token' :
+                $header = $this->request->header('token');
                 break;
         }
 
