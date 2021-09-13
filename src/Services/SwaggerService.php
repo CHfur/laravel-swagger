@@ -184,6 +184,9 @@ class SwaggerService
     protected function getUri()
     {
         $uri = $this->request->route()->uri();
+        if(is_null($uri)){
+            return '/failed';
+        }
         $basePath = preg_replace("/^\//", '', config('auto-doc.basePath'));
         $basePath = preg_quote($basePath, '/');
         $preparedUri = preg_replace("/^{$basePath}/", '', $uri);
