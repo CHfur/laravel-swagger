@@ -39,7 +39,7 @@
     window.onload = function() {
         // Begin Swagger UI call region
         const ui = SwaggerUIBundle({
-            url: "/auto-doc/documentation",
+            url: "/auto-doc" + window.location.pathname,
             dom_id: '#swagger-ui',
             deepLinking: true,
             presets: [
