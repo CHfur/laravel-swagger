@@ -10,7 +10,7 @@ to display the generated documentation for a config.
 ## Installation
 
 ### Composer
- 1. In projects composer.json file you need to add the repositories you want as dependencies:
+ 1. Add the repository to composer.json:
  ```
  "repositories": [
      {
