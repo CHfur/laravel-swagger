@@ -7,9 +7,9 @@ interface DataCollectorInterface
     /**
      * Save temporary data
      *
-     * @param array $data
+     * @param array $tempData
      */
-    public function saveTmpData($data);
+    public function saveTmpData(array $tempData);
 
     /**
      * Get temporary data
