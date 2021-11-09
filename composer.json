@@ -28,6 +28,7 @@
     "php": ">=7.1.0",
     "laravel/framework": ">=5.3.0",
     "minime/annotations": ">=3.0",
+    "ext-json": "*",
     "ronasit/laravel-helpers": "dev-master"
   },
   "autoload": {
