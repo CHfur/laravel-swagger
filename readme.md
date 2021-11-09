@@ -4,28 +4,40 @@ This plugin is designed to gather information and generate documentation about
 your Rest-Api while passing the tests. The principle of operation is based on 
 the fact that the special Middleware installed on the Route for which you want 
 to collect information that after the successful completion of all tests 
-generated Swagger-file. In addition this plug-in is able to draw Swagger-template 
+generated Swagger-file. In addition, this plug-in is able to draw Swagger-template 
 to display the generated documentation for a config.
 
 ## Installation
 
 ### Composer
- 1. `composer require ronasit/laravel-swagger`
+ 1. In projects composer.json file you need to add the repositories you want as dependencies:
+ ```
+ "repositories": [
+     {
+         "type": "vcs",
+         "url": "git@github.com:CHfur/laravel-swagger.git"
+     }
+ ]
+ ```
+ 2. Install dependency:
+ ```
+ composer require chfur/laravel-swagger:dev-master
+ ```
+
 
 ### Laravel
- 1. add `RonasIT\Support\AutoDoc\AutoDocServiceProvider::class,` to providers in `config/app.php`
- 1. run `php artisan vendor:publish`
+ 1. add `RonasIT\Support\AutoDoc\AutoDocServiceProvider::class` to providers in `config/app.php`
+ 2. run `php artisan vendor:publish`
  
 ### Plugin
  1. Add middleware **\RonasIT\Support\AutoDoc\Http\Middleware\AutoDocMiddleware::class** to *Http/Kernel.php*.
- 1. Use **\RonasIT\Support\AutoDoc\Tests\AutoDocTestCaseTrait** in your TestCase in *tests/TestCase.php*
- 1. In *config/auto-doc.php* you can specify enabling of plugin, info of your project, 
+ 2. Use **\RonasIT\Support\AutoDoc\Tests\AutoDocTestCaseTrait** in your TestCase in *tests/TestCase.php*
+ 3. In *config/auto-doc.php* you can specify enabling of plugin, info of your project, 
  some defaults descriptions and route for rendering of documentation. 
- 1. In *.env* file you should add following lines
-    `
-    LOCAL_DATA_COLLECTOR_PROD_PATH=/example-folder/documentation.json  
-    LOCAL_DATA_COLLECTOR_TEMP_PATH=/tmp/documentation.json
-    `
+ 4. In *.env* file you should add following lines
+     `
+     LOCAL_DATA_COLLECTOR_PROD_PATH=/example-folder/documentation.json  
+     `
 
 ## Usages
  For correct working of plugin you have to dispose all the validation rules in the rules() method of class YourRequest, 
@@ -98,5 +110,5 @@ to display the generated documentation for a config.
  - *auto-doc.route* - it's a route where will be located generated documentation  
  - *auto-doc.basePath* - it's a route where located root of your api
  
-Also you can specify way to collect documentation by creating your custom data collector class.
+ Also, you can specify way to collect documentation by creating your custom data collector class.
  
