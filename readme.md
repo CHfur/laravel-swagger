@@ -21,7 +21,7 @@ to display the generated documentation for a config.
  ```
  2. Install dependency:
  ```
- composer require chfur/laravel-swagger:dev-master
+ composer require chfur/laravel-swagger
  ```
 
 
