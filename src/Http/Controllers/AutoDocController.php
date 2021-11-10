@@ -2,6 +2,7 @@
 
 namespace RonasIT\Support\AutoDoc\Http\Controllers;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use RonasIT\Support\AutoDoc\Services\SwaggerService;
@@ -16,7 +17,7 @@ class AutoDocController extends BaseController
         $this->service = app(SwaggerService::class);
     }
 
-    public function documentation()
+    public function documentation(): JsonResponse
     {
         $documentation = $this->service->getDocFileContent();
 
@@ -30,7 +31,7 @@ class AutoDocController extends BaseController
 
     public function getFile(Request $request, $file)
     {
-        $filePath = base_path("vendor/ronasit/laravel-swagger/src/Views/swagger/{$file}");
+        $filePath = base_path("vendor/chfur/laravel-swagger/src/Views/swagger/{$file}");
 
         if (!file_exists($filePath)) {
             throw new NotFoundHttpException();

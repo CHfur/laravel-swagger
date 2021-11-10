@@ -1,6 +1,6 @@
 {
-  "name": "ronasit/laravel-swagger",
-  "description": "Provided middleware for generating of swagger-documentation file by run testing of RESTful API.",
+  "name": "chfur/laravel-swagger",
+  "description": "The fork of the ronasit/laravel-swagger repo. Provided middleware for generating of swagger-documentation file by run testing of RESTful API.",
   "keywords": [
     "laravel",
     "swagger",
@@ -13,12 +13,23 @@
     {
       "name": "Roman Dubrovin",
       "email": "rdubrovin@ronasit.com"
+    },
+    {
+      "name": "Dmitry",
+      "homepage": "https://github.com/CHfur"
+    },
+    {
+      "name": "NeonGC",
+      "email": "admin@neongc.ru",
+      "homepage": "https://neongc.ru"
     }
   ],
   "require": {
     "php": ">=7.1.0",
     "laravel/framework": ">=5.3.0",
-    "minime/annotations": "~3.0"
+    "minime/annotations": ">=3.0",
+    "ext-json": "*",
+    "ronasit/laravel-helpers": "dev-master"
   },
   "autoload": {
     "psr-4": {
