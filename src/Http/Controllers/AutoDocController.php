@@ -31,7 +31,7 @@ class AutoDocController extends BaseController
 
     public function getFile(Request $request, $file)
     {
-        $filePath = base_path("vendor/chfur/laravel-swagger/src/Views/swagger/{$file}");
+        $filePath = base_path("vendor/chfur/laravel-swagger/src/Views/swagger/$file");
 
         if (!file_exists($filePath)) {
             throw new NotFoundHttpException();

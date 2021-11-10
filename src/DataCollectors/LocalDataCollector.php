@@ -9,10 +9,12 @@ use RonasIT\Support\AutoDoc\Exceptions\MissedProductionFilePathException;
 class LocalDataCollector implements DataCollectorInterface
 {
     public $prodFilePath;
-    public $tempFilePath;
 
     protected static $data;
 
+    /**
+     * @throws MissedProductionFilePathException
+     */
     public function __construct()
     {
         $this->prodFilePath = config('local-data-collector.production_path');
@@ -22,7 +24,7 @@ class LocalDataCollector implements DataCollectorInterface
         }
     }
 
-    public function saveTmpData($tempData)
+    public function saveTmpData(array $tempData)
     {
         self::$data = $tempData;
     }
@@ -41,6 +43,9 @@ class LocalDataCollector implements DataCollectorInterface
         self::$data = [];
     }
 
+    /**
+     * @throws FileNotFoundException
+     */
     public function getDocumentation()
     {
         if (!file_exists($this->prodFilePath)) {

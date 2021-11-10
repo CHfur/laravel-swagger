@@ -1,5 +1,7 @@
 <?php
 
+use RonasIT\Support\AutoDoc\DataCollectors\LocalDataCollector;
+
 return [
 
     /*
@@ -7,10 +9,10 @@ return [
     | Documentation Route
     |--------------------------------------------------------------------------
     |
-    | Route which will return documentation
+    | Route('s) which will return documentation
     */
 
-    'route' => '/',
+    'routes' => ['/'],
 
     /*
     |--------------------------------------------------------------------------
@@ -65,7 +67,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Library name, which used to secure the project.
-    | Available values: "jwt", "laravel", "null"
+    | Available values: "jwt", "laravel", "token", "null"
     */
 
     'security' => '',
@@ -94,11 +96,10 @@ return [
     | RonasIT\Support\AutoDoc\Interfaces\DataCollectorInterface interface,
     | or our data collectors from next packages:
     |
-    | ronasit/local-data-collector
     | ronasit/laravel-remote-data-collector
     |
-    | If config not set, will be using ronasit/local-data-collector
+    | If config not set, will be using LocalDataCollector::class
     */
 
-    'data_collector' => \RonasIT\Support\AutoDoc\DataCollectors\LocalDataCollector::class
+    'data_collector' => LocalDataCollector::class
 ];
