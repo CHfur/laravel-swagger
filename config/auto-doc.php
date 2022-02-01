@@ -101,5 +101,17 @@ return [
     | If config not set, will be using LocalDataCollector::class
     */
 
-    'data_collector' => LocalDataCollector::class
+    'data_collector' => LocalDataCollector::class,
+
+     /*
+     |--------------------------------------------------------------------------
+     | Swagger documentation visibility environments list
+     |-------------------------------------------------------------------------- 
+     |
+     | The list of environments in which auto documentation will be displaying
+     */
+    'display_environments' => [
+        'local',
+        'development',
+    ],
 ];

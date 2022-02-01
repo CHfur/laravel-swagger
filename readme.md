@@ -19,25 +19,38 @@ to display the generated documentation for a config.
      }
  ]
  ```
- 2. Install dependency:
+
+2. Install dependency:
+
  ```
  composer require chfur/laravel-swagger
  ```
 
-
 ### Laravel
- 1. add `RonasIT\Support\AutoDoc\AutoDocServiceProvider::class` to providers in `config/app.php`
- 2. run `php artisan vendor:publish`
- 
+
+1. If you're on Laravel 5.5 or later the package will be auto-discovered. Otherwise you will need to manually configure
+   it in your config/app.php.
+
+```php
+'providers' => [
+    // ...
+    RonasIT\Support\AutoDoc\AutoDocServiceProvider::class,
+],
+```
+
+2. run `php artisan vendor:publish`
+
 ### Plugin
- 1. Add middleware **\RonasIT\Support\AutoDoc\Http\Middleware\AutoDocMiddleware::class** to *Http/Kernel.php*.
- 2. Use **\RonasIT\Support\AutoDoc\Tests\AutoDocTestCaseTrait** in your TestCase in *tests/TestCase.php*
- 3. In *config/auto-doc.php* you can specify enabling of plugin, info of your project, 
- some defaults descriptions and route for rendering of documentation. 
- 4. In *.env* file you should add following lines
-     `
-     LOCAL_DATA_COLLECTOR_PROD_PATH=/example-folder/documentation.json  
-     `
+
+1. Add middleware **\RonasIT\Support\AutoDoc\Http\Middleware\AutoDocMiddleware::class** to *Http/Kernel.php*.
+2. Use **\RonasIT\Support\AutoDoc\Tests\AutoDocTestCaseTrait** in your TestCase in *tests/TestCase.php*
+3. Call `saveDocumentation` method in the `TearDown` method of your base TestCase class
+4. In *config/auto-doc.php* you can specify enabling of plugin, info of your project, some defaults descriptions and
+   route for rendering of documentation.
+5. In *.env* file you should add following lines
+   `
+   LOCAL_DATA_COLLECTOR_PROD_PATH=/example-folder/documentation.json  
+   `
 
 ## Usages
  For correct working of plugin you have to dispose all the validation rules in the rules() method of class YourRequest, 

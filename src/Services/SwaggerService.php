@@ -320,6 +320,10 @@ class SwaggerService
             $responseExample['schema'] = [
                 'example' => json_decode($content, true),
             ];
+        } elseif ($mimeType === 'application/pdf') {
+            $responseExample['schema'] = [
+                'example' => base64_encode($content),
+            ];
         } else {
             $responseExample['examples']['example'] = $content;
         }
@@ -472,6 +476,9 @@ class SwaggerService
         return empty($bodyParamExisted);
     }
 
+    /**
+     * @throws ReflectionException
+     */
     public function getConcreteRequest()
     {
         $controller = $this->request->route()->getActionName();
